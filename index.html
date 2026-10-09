@@ -25,10 +25,9 @@
       </p>
     </header>
 
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <div class="space-y-8">
 
-      <!-- INPUTS -->
-      <section class="lg:col-span-5 space-y-6">
+      <section aria-label="Calculator inputs" class="space-y-6">
 
         <label class="section flex items-center justify-between gap-4 cursor-pointer">
           <span class="text-sm font-semibold">Use Etsy fees and advertising</span>
@@ -291,8 +290,7 @@
         </div>
       </section>
 
-      <!-- RESULTS -->
-      <section class="lg:col-span-7 space-y-6">
+      <section aria-label="Profit results" class="space-y-6">
 
         <div class="section">
           <div class="flex flex-wrap justify-between gap-3 items-start mb-5">
@@ -308,7 +306,7 @@
             </span>
           </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-4">
             <div class="metric">
               <p class="text-sm text-slate-500">Recommended price · net profit goal</p>
               <p id="recommendedPrice" class="text-3xl font-bold mt-2">₹0</p>
@@ -411,10 +409,24 @@
       </section>
     </div>
 
-    <footer class="text-xs text-slate-400 text-center py-8">
-      Handmade pricing toolkit · Optional Etsy fee estimates; verify rates in your Etsy Payment account.
-    </footer>
   </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__content">
+      <div class="site-footer__top">
+        <p class="site-footer__eyebrow">Handmade business toolkit</p>
+        <p class="site-footer__note">
+          Optional Etsy fee estimates. Verify applicable rates in your Etsy Payment account.
+        </p>
+      </div>
+      <div class="site-footer__bottom">
+        <p class="site-footer__copyright">© 2026 Codexxdesigns</p>
+      </div>
+      <p class="site-footer__wordmark" aria-label="Codexxdesigns">
+        <span class="site-footer__wordmark-part" aria-hidden="true">Codexx</span><span class="site-footer__wordmark-part site-footer__wordmark-part--second" aria-hidden="true">designs</span>
+      </p>
+    </div>
+  </footer>
 
 <script src="script.js" defer></script>
 </body>

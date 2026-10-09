@@ -151,10 +151,10 @@
     return Math.ceil(high * 100) / 100;
   }
 
-  function row(label, amount, bold = false) {
+  function row(label, amount, bold = false, positive = false) {
     return `<tr class="border-b border-slate-100 ${bold ? "font-bold" : ""}">
       <td class="py-3 pr-4">${label}</td>
-      <td class="py-3 text-right whitespace-nowrap">${money(amount)}</td>
+      <td class="py-3 text-right whitespace-nowrap ${positive ? "text-emerald-600" : ""}">${money(amount)}</td>
     </tr>`;
   }
 
@@ -163,7 +163,6 @@
     const etsyFeesEnabled = $("etsyFeesEnabled").checked;
     const sellingFeesEnabled = etsyFeesEnabled && $("sellingFeesEnabled").checked;
     $("etsySettings").hidden = !etsyFeesEnabled;
-    $("etsyAssumptions").hidden = !etsyFeesEnabled;
     $("feeTaxRate").disabled = !etsyFeesEnabled || !$("feeTaxEnabled").checked;
     const s = getSettings();
     const price = num("price");
@@ -200,7 +199,7 @@
     $("marginBar").style.width =
       Math.max(0, Math.min(100, r.margin)) + "%";
     $("marginBar").className = "h-full rounded-full " +
-      (r.profit >= 0 ? "bg-violet-600" : "bg-red-500");
+      (r.profit >= 0 ? "bg-emerald-600" : "bg-red-500");
 
     let status;
     if (r.profit < 0) {
@@ -220,7 +219,7 @@
     $("feeRows").innerHTML =
       row("Product selling price", r.price) +
       row("Shipping paid by buyer", s.shippingCharged) +
-      row("Total order amount", r.order, true) +
+      row("Total order amount", r.order, true, true) +
       (etsyFeesEnabled
         ? (sellingFeesEnabled
             ? row("Listing + renewal fees", r.listing) +
@@ -233,16 +232,16 @@
           row("Estimated tax on modeled seller fees", r.feeTax) +
           row("Etsy Ads budget per order", r.etsyAds) +
           row("Other taxes / adjustments", r.otherTaxes) +
-          row("Total Etsy fees and advertising", r.fees, true)
-        : row("Additional fees", r.fees, true)) +
+          row("Total Etsy fees and advertising", r.fees, true, true)
+        : row("Additional fees", r.fees, true, true)) +
       row("Materials", s.materials) +
       row("Labour", s.labour) +
       row("Packaging", s.packaging) +
       row("Shipping paid by seller", s.shippingCost) +
       row("Other product costs", s.otherCosts) +
       row("Allocated setup fee", s.setup) +
-      row("Total product costs", r.costs, true) +
-      row("Estimated net profit", r.profit, true);
+      row("Total product costs", r.costs, true, true) +
+      row("Estimated net profit", r.profit, true, r.profit >= 0);
 
     const prices = [
       Math.max(0, price * 0.8),
@@ -282,4 +281,16 @@
   });
 
   render();
+
+  const footer = document.querySelector(".site-footer");
+  if ("IntersectionObserver" in window && footer) {
+    footer.classList.add("wordmark-motion-ready");
+    const footerObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting)) {
+        footer.classList.add("is-visible");
+        footerObserver.disconnect();
+      }
+    }, { threshold: 0.15 });
+    footerObserver.observe(footer);
+  }
 })();
