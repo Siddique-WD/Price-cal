@@ -23,9 +23,18 @@ Then visit <http://localhost:8000>.
 
 ## Deploy with GitHub Pages
 
-This project is a static site and does not require a build step.
+This project is a static site and does not require a build step. Keep these files together in the repository root:
 
-1. Push `index.html` and this `README.md` to the root of a GitHub repository.
+```text
+index.html
+styles.css
+script.js
+README.md
+```
+
+`index.html` loads `styles.css` for presentation and `script.js` for calculator behavior.
+
+1. Push the site files and this `README.md` to the root of a GitHub repository.
 2. In the repository, open **Settings → Pages**.
 3. Under **Build and deployment**, select **Deploy from a branch**.
 4. Choose the branch containing the site (commonly `main`) and the `/ (root)` folder, then save.

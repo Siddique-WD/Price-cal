@@ -1,0 +1,27 @@
+body {
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      background: #f7f7fb;
+    }
+    input, select { outline: none; }
+    input:focus, select:focus {
+      border-color: #7c3aed !important;
+      box-shadow: 0 0 0 3px #ede9fe;
+    }
+    .field {
+      width: 100%;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      background: white;
+    }
+    .section {
+      background: white;
+      border: 1px solid #e8e8f0;
+      border-radius: 16px;
+      padding: 20px;
+    }
+    .metric {
+      border-radius: 14px;
+      background: #f8fafc;
+      padding: 16px;
+    }
