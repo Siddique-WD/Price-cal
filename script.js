@@ -286,11 +286,11 @@
   if ("IntersectionObserver" in window && footer) {
     footer.classList.add("wordmark-motion-ready");
     const footerObserver = new IntersectionObserver(entries => {
-      if (entries.some(entry => entry.isIntersecting)) {
+      if (entries.some(entry => entry.isIntersecting && entry.intersectionRatio > 0)) {
         footer.classList.add("is-visible");
         footerObserver.disconnect();
       }
-    }, { threshold: 0.15 });
+    }, { rootMargin: "0px 0px 10% 0px", threshold: 0 });
     footerObserver.observe(footer);
   }
 })();

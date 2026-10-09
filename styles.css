@@ -212,20 +212,22 @@ button {
 
 .site-footer.wordmark-motion-ready:not(.is-visible) .site-footer__wordmark-part {
   opacity: 0;
-  transform: translateY(0.28em);
+  filter: blur(8px);
+  transform: translateY(0.45em);
 }
 
 .site-footer.is-visible .site-footer__wordmark-part {
-  animation: wordmark-enter 850ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: wordmark-enter 1100ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .site-footer__wordmark-part--second {
-  animation-delay: 220ms;
+  animation-delay: 350ms;
 }
 
 @keyframes wordmark-enter {
   to {
     opacity: 1;
+    filter: blur(0);
     transform: translateY(0);
   }
 }
